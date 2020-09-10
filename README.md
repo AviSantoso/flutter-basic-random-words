@@ -1,16 +1,36 @@
-# tutorial2
+# Basic Random Words App w/ Flutter
 
-A new Flutter project.
 
-## Getting Started
+## Built With
 
-This project is a starting point for a Flutter application.
+* [Flutter](https://flutter.dev/)
+* [VS Code](https://code.visualstudio.com/)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<!-- USAGE EXAMPLES -->
+## Usage
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![](example.gif)
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Aviciena Santoso - avi.santoso@gmail.com
+
+Project Link: [https://github.com/AviSantoso/flutter-basic-random-words](https://github.com/AviSantoso/flutter-basic-random-words)
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/aviciena-santoso/
