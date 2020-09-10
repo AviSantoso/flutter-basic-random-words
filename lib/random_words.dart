@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:tutorial2/saved_word_pairs.dart';
 
 class RandomWords extends StatefulWidget {
+  SavedWordPairs _savedWordPairs;
+
+  RandomWords(SavedWordPairs savedWordPairs) {
+    _savedWordPairs = savedWordPairs;
+  }
+
   @override
-  _RandomWordsState createState() => _RandomWordsState();
+  _RandomWordsState createState() => _RandomWordsState(_savedWordPairs);
 }
 
 class _RandomWordsState extends State<RandomWords> {
@@ -11,8 +18,13 @@ class _RandomWordsState extends State<RandomWords> {
   static const _wordsOnStartup = 50;
 
   final _randomWords = <WordPair>[];
-  final _savedWords = Set<String>();
   final _scrollController = ScrollController();
+
+  SavedWordPairs _savedWordPairs;
+
+  _RandomWordsState(SavedWordPairs savedWordPairs) {
+    _savedWordPairs = savedWordPairs;
+  }
 
   void _loadMore() {
     setState(() {
@@ -20,15 +32,15 @@ class _RandomWordsState extends State<RandomWords> {
     });
   }
 
-  void _saveWord(String favString) {
+  void _saveWord(WordPair pair) {
     setState(() {
-      _savedWords.add(favString);
+      _savedWordPairs.savedWords.add(pair);
     });
   }
 
-  void _unsaveWord(String favString) {
+  void _unsaveWord(WordPair pair) {
     setState(() {
-      _savedWords.remove(favString);
+      _savedWordPairs.savedWords.remove(pair);
     });
   }
 
@@ -64,15 +76,15 @@ class _RandomWordsState extends State<RandomWords> {
               );
             }
 
-            final randomWord = _randomWords[index].asPascalCase;
-            final isSaved = _savedWords.contains(randomWord);
+            final randomPair = _randomWords[index];
+            final isSaved = _savedWordPairs.savedWords.contains(randomPair);
 
             final tileContent = Row(
               children: [
                 Flexible(child: Text((index + 1).toString())),
                 VerticalDivider(),
                 Expanded(
-                  child: Text(randomWord),
+                  child: Text(randomPair.asPascalCase),
                 )
               ],
             );
@@ -83,10 +95,8 @@ class _RandomWordsState extends State<RandomWords> {
                       Icons.favorite,
                       color: Colors.red[700],
                     ),
-                    onPressed: () => _unsaveWord(randomWord))
-                : IconButton(
-                    icon: Icon(Icons.favorite_border),
-                    onPressed: () => _saveWord(randomWord));
+                    onPressed: () => _unsaveWord(randomPair))
+                : IconButton(icon: Icon(Icons.favorite_border), onPressed: () => _saveWord(randomPair));
 
             return ListTile(title: tileContent, trailing: favButton);
           },
